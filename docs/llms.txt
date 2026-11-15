@@ -1,0 +1,14 @@
+# CiteReady — Instant AI Search (llms.txt), Schema & DMARC Fixer
+
+> Scan any domain in 3 seconds for ChatGPT/Claude/Perplexity visibility, Schema.org JSON-LD, HTTP security headers, and SPF/DMARC email deliverability. Download a tailored drop-in Fix Pack.
+
+Canonical website: https://romanfjose.github.io
+Full LLM context digest: https://romanfjose.github.io/llms-full.txt
+
+## Key Pages
+- [CiteReady — Instant AI Search (llms.txt), Schema & DMARC Fixer](https://romanfjose.github.io/citeready/): Scan any domain in 3 seconds for ChatGPT/Claude/Perplexity visibility, Schema.org JSON-LD, HTTP security headers, and SPF/DMARC email delive
+
+## Core Topics Covered
+- Make Your Website Cited by AI Search & Trusted by Inboxes in 5 Minutes
+- Tailored Fix-Pack Preview (Compiled from Your Live Pages)
+- Unlock Your Complete 9-File Drop-In Fix Pack + Pro CLI

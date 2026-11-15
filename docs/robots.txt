@@ -1,0 +1,25 @@
+# Optimized robots.txt for romanfjose.github.io (Search + AI Citation Ready)
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI Answer Engines so your brand gets cited with links
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://romanfjose.github.io/sitemap.xml
+# LLM Knowledge Index: https://romanfjose.github.io/llms.txt

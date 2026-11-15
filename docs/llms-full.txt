@@ -1,0 +1,14 @@
+# CiteReady — Instant AI Search (llms.txt), Schema & DMARC Fixer — Complete AI & RAG Reference Corpus
+
+> Scan any domain in 3 seconds for ChatGPT/Claude/Perplexity visibility, Schema.org JSON-LD, HTTP security headers, and SPF/DMARC email deliverability. Download a tailored drop-in Fix Pack.
+
+Source Domain: romanfjose.github.io
+Generated: 2026-11-15T20:36:50Z
+
+---
+## 1. CiteReady — Instant AI Search (llms.txt), Schema & DMARC Fixer
+URL: https://romanfjose.github.io/citeready/
+Summary: Scan any domain in 3 seconds for ChatGPT/Claude/Perplexity visibility, Schema.org JSON-LD, HTTP security headers, and SPF/DMARC email deliverability. Download a tailored drop-in Fix Pack.
+Outline: Make Your Website Cited by AI Search & Trusted by Inboxes in 5 Minutes | Tailored Fix-Pack Preview (Compiled from Your Live Pages) | Unlock Your Complete 9-File Drop-In Fix Pack + Pro CLI
+
+CiteReady — Instant AI Search (llms.txt), Schema & DMARC Fixer ⚡ CiteReady GEO + SECURITY + DMARC ENGINE Zero-Signup Live Scanner Make Your Website Cited by AI Search & Trusted by Inboxes in 5 Minutes 87% of SaaS & e-commerce sites silently block AI citation crawlers, lack /llms.txt + JSON-LD , or fail Gmail DMARC rules. Scan your live URL and get a tailored, drop-in Fix Pack. Run Free 11-Point Audit → ✓ Live HTTP + DNS TXT inspection ✓ Auto-builds llms.txt & llms-full.txt ✓ Ready-to-drop Vercel / Cloudflare / Nginx & DMARC patches Try live scan: citeready (Grade A) • news.ycombinator.com • example.com -- GRADE - Tailored Fix-Pack Preview (Compiled from Your Live Pages) Below is a live excerpt of the 9 custom files generated for your domain: public/llms.txt (Preview) snippets/schema-jsonld.html (Preview) Unlock Your Complete 9-File Drop-In Fix Pack + Pro CLI Includes full public/llms.txt
