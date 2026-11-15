@@ -1,0 +1,9 @@
+name = "citeready"
+main = "web/worker.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+SINGLE_CHECKOUT_URL = "https://romanfjose.gumroad.com/l/citeready?wanted=true"
+AGENCY_CHECKOUT_URL = "https://romanfjose.gumroad.com/l/citeready?wanted=true"
+GUMROAD_SINGLE_PRODUCT_ID = "H3r8un8nxQck_A_OasTU2Q=="
+GUMROAD_AGENCY_PRODUCT_ID = ""

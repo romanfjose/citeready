@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CiteReady — Instant AI Search (llms.txt), Schema &amp; DMARC Fixer</title>
+  <meta name="description" content="Scan any domain in 3 seconds for ChatGPT/Claude/Perplexity visibility, Schema.org JSON-LD, HTTP security headers, and SPF/DMARC email deliverability. Download a tailored drop-in Fix Pack." />
+  <link rel="canonical" href="https://romanfjose.github.io/citeready/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://romanfjose.github.io/citeready/" />
+  <meta property="og:title" content="CiteReady — Instant AI Search (llms.txt), Schema &amp; DMARC Site Fixer" />
+  <meta property="og:description" content="Free 3-second live HTTP + DNS scanner for /llms.txt, Schema JSON-LD, security headers, and SPF/DMARC — plus tailored 9-file drop-in Fix Packs." />
+  <meta property="og:image" content="https://romanfjose.github.io/citeready/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CiteReady",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web, Windows, macOS, Linux",
+    "url": "https://romanfjose.github.io/citeready/",
+    "description": "Instant AI Search (GEO / llms.txt), Schema.org JSON-LD, HTTP Security Header, and SPF/DMARC Deliverability Auditor & Drop-In Fix Pack Generator.",
+    "offers": { "@type": "Offer", "price": "29.00", "priceCurrency": "USD" }
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #090d16;
+      --panel: #111827;
+      --panel-2: #172033;
+      --border: #24324b;
+      --text: #f3f6fc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #13203a 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 32px 20px 80px; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+    .brand { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+    .badge { font-size: 0.72rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: rgba(56,189,248,0.14); color: var(--accent); border: 1px solid rgba(56,189,248,0.35); }
+    .hero { text-align: center; max-width: 760px; margin: 0 auto 32px; }
+    h1 { font-size: clamp(1.9rem, 4vw, 2.85rem); line-height: 1.13; margin: 0 0 14px; letter-spacing: -0.03em; }
+    .sub { color: var(--muted); font-size: 1.06rem; margin: 0 auto 26px; }
+    .scan-box {
+      display: flex; gap: 10px; background: var(--panel); padding: 8px; border-radius: 14px;
+      border: 1px solid var(--border); box-shadow: 0 18px 45px rgba(0,0,0,0.4);
+    }
+    .scan-box input {
+      flex: 1; background: transparent; border: none; color: var(--text); font-size: 1.02rem;
+      padding: 12px 14px; outline: none;
+    }
+    .btn {
+      cursor: pointer; border: none; border-radius: 10px; font-weight: 700; font-size: 0.96rem;
+      padding: 12px 22px; transition: transform 0.12s ease, opacity 0.15s ease;
+    }
+    .btn:hover { opacity: 0.94; transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.55; cursor: wait; transform: none; }
+    .btn-primary { background: linear-gradient(135deg, #38bdf8, #2563eb); color: #fff; }
+    .btn-green { background: linear-gradient(135deg, #22c55e, #16a34a); color: #052e16; font-weight: 800; }
+    .btn-outline { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+    .trust-row { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 14px; font-size: 0.83rem; color: var(--muted); }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 24px; }
+    .score-grid { display: grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: center; }
+    @media (max-width: 680px) {
+      .scan-box { flex-direction: column; }
+      .score-grid { grid-template-columns: 1fr; text-align: center; }
+    }
+    .ring {
+      width: 152px; height: 152px; border-radius: 50%; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 8px solid var(--border); background: var(--panel-2);
+    }
+    .ring .num { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+    .ring .grd { font-size: 0.85rem; color: var(--muted); margin-top: 4px; font-weight: 700; }
+    .checks-list { display: grid; gap: 10px; margin-top: 18px; }
+    .check-row {
+      display: grid; grid-template-columns: 78px 1fr auto; gap: 12px; align-items: center;
+      background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px;
+    }
+    .pill { font-size: 0.74rem; font-weight: 800; text-align: center; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; }
+    .pill.pass { background: rgba(34,197,94,0.16); color: #4ade80; }
+    .pill.warn { background: rgba(245,158,11,0.16); color: #fbbf24; }
+    .pill.fail { background: rgba(239,68,68,0.18); color: #f87171; }
+    .pts { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.85rem; color: var(--muted); }
+    pre.preview {
+      background: #070b12; border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+      overflow-x: auto; font-size: 0.82rem; color: #cbd5e1; margin: 10px 0 0; position: relative;
+    }
+    .paywall-box {
+      background: linear-gradient(160deg, rgba(37,99,235,0.16), rgba(34,197,94,0.11));
+      border: 1px solid rgba(56,189,248,0.45); border-radius: 16px; padding: 24px; margin-top: 24px;
+    }
+    .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    @media (max-width: 720px) { .tier-grid { grid-template-columns: 1fr; } }
+    .tier { background: rgba(9,13,22,0.78); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; }
+    .price { font-size: 1.85rem; font-weight: 800; margin: 6px 0; }
+    .unlock-bar { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+    .unlock-bar input {
+      flex: 1; min-width: 230px; background: #090d16; border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); padding: 11px 14px; font-size: 0.94rem;
+    }
+    .err { color: #f87171; font-size: 0.9rem; margin-top: 10px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">⚡ CiteReady <span class="badge">GEO + SECURITY + DMARC ENGINE</span></div>
+      <div style="font-size:0.86rem;color:var(--muted);">Zero-Signup Live Scanner</div>
+    </div>
+
+    <div class="hero">
+      <h1>Make Your Website Cited by AI Search &amp; Trusted by Inboxes in 5 Minutes</h1>
+      <p class="sub">87% of SaaS &amp; e-commerce sites silently block AI citation crawlers, lack <code>/llms.txt</code> + <code>JSON-LD</code>, or fail Gmail DMARC rules. Scan your live URL and get a tailored, drop-in Fix Pack.</p>
+
+      <form id="scanForm" class="scan-box">
+        <input id="urlInput" type="text" placeholder="Enter your domain (e.g. yourstartup.com)" required />
+        <button id="scanBtn" type="submit" class="btn btn-primary">Run Free 11-Point Audit →</button>
+      </form>
+      <div class="trust-row">
+        <span>✓ Live HTTP + DNS TXT inspection</span>
+        <span>✓ Auto-builds <code>llms.txt</code> &amp; <code>llms-full.txt</code></span>
+        <span>✓ Ready-to-drop Vercel / Cloudflare / Nginx &amp; DMARC patches</span>
+      </div>
+      <div style="margin-top:10px;font-size:0.82rem;color:var(--muted);">
+        Try live scan:
+        <a href="?url=citeready.romanfjose.workers.dev" style="color:var(--accent);text-decoration:none;margin:0 6px;">citeready (Grade A)</a> •
+        <a href="?url=news.ycombinator.com" style="color:var(--accent);text-decoration:none;margin:0 6px;">news.ycombinator.com</a> •
+        <a href="?url=example.com" style="color:var(--accent);text-decoration:none;margin:0 6px;">example.com</a>
+      </div>
+      <div id="errBox" class="err hidden"></div>
+    </div>
+
+    <div id="resultSection" class="hidden">
+      <div class="card">
+        <div class="score-grid">
+          <div id="scoreRing" class="ring">
+            <div id="scoreNum" class="num">--</div>
+            <div id="scoreGrade" class="grd">GRADE -</div>
+          </div>
+          <div>
+            <div style="font-size:0.84rem;color:var(--accent);font-weight:700;text-transform:uppercase;" id="resDomain"></div>
+            <h2 style="margin:4px 0 8px;font-size:1.45rem;" id="resTitle"></h2>
+            <p style="margin:0;color:var(--muted);font-size:0.95rem;" id="resSummary"></p>
+          </div>
+        </div>
+
+        <div id="checksContainer" class="checks-list"></div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px;">Tailored Fix-Pack Preview (Compiled from Your Live Pages)</h3>
+        <p style="margin:0 0 12px;color:var(--muted);font-size:0.9rem;">Below is a live excerpt of the 9 custom files generated for your domain:</p>
+        <div style="font-size:0.8rem;font-weight:700;color:var(--accent);margin-top:8px;">public/llms.txt (Preview)</div>
+        <pre id="llmsPreview" class="preview"></pre>
+        <div style="font-size:0.8rem;font-weight:700;color:var(--accent);margin-top:14px;">snippets/schema-jsonld.html (Preview)</div>
+        <pre id="schemaPreview" class="preview"></pre>
+      </div>
+
+      <div class="paywall-box">
+        <h3 style="margin:0 0 6px;font-size:1.35rem;">Unlock Your Complete 9-File Drop-In Fix Pack + Pro CLI</h3>
+        <p style="margin:0;color:var(--muted);font-size:0.94rem;">Includes full <code>public/llms.txt</code>, <code>public/llms-full.txt</code>, AI-ready <code>robots.txt</code>, <code>schema-jsonld.html</code>, <code>vercel.json</code> / Cloudflare <code>_headers</code> / <code>nginx.conf</code>, <code>SPF + DMARC</code> DNS records, and the offline Python CLI &amp; Batch Agency Scanner.</p>
+
+        <div class="tier" style="margin-top:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+            <div>
+              <div style="font-weight:700;color:var(--accent);font-size:0.82rem;">COMPLETE PRO FIX-PACK + UNLIMITED CLI LICENSE</div>
+              <div class="price">$29 <span style="font-size:0.88rem;font-weight:400;color:var(--muted);">one-time • instant license key</span></div>
+              <div style="color:var(--muted);font-size:0.88rem;">✓ Instant 9-file ZIP for any audited domain &nbsp;•&nbsp; ✓ Offline Pro CLI + Batch Agency Mode &nbsp;•&nbsp; ✓ GitHub CI Action</div>
+            </div>
+            <a id="buySingleBtn" href="https://romanfjose.gumroad.com/l/citeready?wanted=true" target="_blank" rel="noopener" class="btn btn-green" style="text-decoration:none;text-align:center;padding:14px 26px;font-size:1.02rem;">Get Instant Access + License Key ($29) →</a>
+          </div>
+        </div>
+
+        <div class="unlock-bar">
+          <input id="licenseInput" type="text" placeholder="Already purchased? Paste your Gumroad License Key to download ZIP..." />
+          <button id="unlockBtn" type="button" class="btn btn-primary">Verify &amp; Download Fix-Pack ZIP</button>
+        </div>
+        <div id="unlockMsg" class="err hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.CITEREADY_API_BASE = "https://citeready.romanfjose.workers.dev";
+    const API_BASE = window.CITEREADY_API_BASE || "";
+    let lastAuditedUrl = "";
+    const form = document.getElementById("scanForm");
+    const urlInput = document.getElementById("urlInput");
+    const scanBtn = document.getElementById("scanBtn");
+    const errBox = document.getElementById("errBox");
+    const resultSection = document.getElementById("resultSection");
+
+    function colorForScore(s) {
+      if (s >= 80) return "#22c55e";
+      if (s >= 55) return "#f59e0b";
+      return "#ef4444";
+    }
+
+    async function runAudit(targetUrl) {
+      errBox.classList.add("hidden");
+      scanBtn.disabled = true;
+      scanBtn.textContent = "Auditing Live HTTP + DNS...";
+      try {
+        const resp = await fetch(API_BASE + "/api/audit?url=" + encodeURIComponent(targetUrl));
+        const data = await resp.json();
+        if (!resp.ok || data.error) {
+          throw new Error(data.error || "Audit failed");
+        }
+        lastAuditedUrl = data.audit.final_url;
+        const sc = data.audit.score;
+        const ring = document.getElementById("scoreRing");
+        ring.style.borderColor = colorForScore(sc);
+        document.getElementById("scoreNum").textContent = sc;
+        document.getElementById("scoreGrade").textContent = "GRADE " + data.audit.grade;
+        document.getElementById("resDomain").textContent = data.audit.root_domain + " • " + data.audit.response_ms + "ms";
+        document.getElementById("resTitle").textContent = data.audit.site_title;
+
+        const failed = data.audit.checks.filter(c => c.status !== "pass").length;
+        document.getElementById("resSummary").textContent =
+          failed === 0
+            ? "All 11 GEO, structured metadata, security, and email deliverability checks passed."
+            : failed + " of 11 revenue & visibility checks need attention. Your custom drop-in Fix Pack is ready below.";
+
+        const container = document.getElementById("checksContainer");
+        container.innerHTML = "";
+        for (const c of data.audit.checks) {
+          const row = document.createElement("div");
+          row.className = "check-row";
+          row.innerHTML = `
+            <span class="pill ${c.status}">${c.status}</span>
+            <div>
+              <div style="font-weight:700;font-size:0.95rem;">${escapeHtml(c.title)} <span style="color:var(--muted);font-weight:400;font-size:0.8rem;">(${escapeHtml(c.category)})</span></div>
+              <div style="color:var(--muted);font-size:0.84rem;">${escapeHtml(c.evidence)}</div>
+            </div>
+            <div class="pts">${c.points}/${c.max_points}</div>
+          `;
+          container.appendChild(row);
+        }
+
+        document.getElementById("llmsPreview").textContent = data.preview.llms_excerpt;
+        document.getElementById("schemaPreview").textContent = data.preview.schema_excerpt;
+        resultSection.classList.remove("hidden");
+        resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (err) {
+        errBox.textContent = err.message || String(err);
+        errBox.classList.remove("hidden");
+      } finally {
+        scanBtn.disabled = false;
+        scanBtn.textContent = "Run Free 11-Point Audit →";
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s || "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+    }
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      if (urlInput.value.trim()) runAudit(urlInput.value.trim());
+    });
+
+    document.getElementById("unlockBtn").addEventListener("click", async () => {
+      const key = document.getElementById("licenseInput").value.trim();
+      const msg = document.getElementById("unlockMsg");
+      msg.classList.add("hidden");
+      if (!key) {
+        msg.textContent = "Please paste your Gumroad license key from your receipt.";
+        msg.classList.remove("hidden");
+        return;
+      }
+      if (!lastAuditedUrl) {
+        msg.textContent = "Run a domain scan above first so we know which Fix-Pack ZIP to build.";
+        msg.classList.remove("hidden");
+        return;
+      }
+      const btn = document.getElementById("unlockBtn");
+      btn.disabled = true;
+      btn.textContent = "Verifying License...";
+      try {
+        const resp = await fetch(API_BASE + "/api/unlock", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: lastAuditedUrl, license_key: key })
+        });
+        if (!resp.ok) {
+          const errData = await resp.json().catch(() => ({}));
+          throw new Error(errData.error || "License verification failed.");
+        }
+        const blob = await resp.blob();
+        const dlUrl = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = dlUrl;
+        a.download = (new URL(lastAuditedUrl).hostname.replace(/^www\./, "").replace(/\./g, "-")) + "-citeready-fixpack.zip";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(dlUrl);
+      } catch (err) {
+        msg.textContent = err.message || String(err);
+        msg.classList.remove("hidden");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Verify & Download Fix-Pack ZIP";
+      }
+    });
+
+    // Auto-run if ?url= parameter is present (for personalized founder outreach links!)
+    const params = new URLSearchParams(window.location.search);
+    const prefill = params.get("url");
+    if (prefill) {
+      urlInput.value = prefill;
+      runAudit(prefill);
+    }
+  </script>
+</body>
+</html>

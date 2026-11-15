@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.wrangler/
+node_modules/
+.env
+agents.md
+AGENTS.md
+leads/
+launch/
+dist/
+LIVE_URL.txt
+deploy_edge.cmd
+publish_github.cmd
+scripts/prospect_hn.py
+scripts/harvest_b2b_leads.py
+scripts/stage_gmail_drafts.py
+scripts/wire_and_deploy.ps1
